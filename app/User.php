@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles() {
+
+        return $this->belongsToMany(Role::class, 'user_roles');      
+    }
+
+    public function isAdministrator() {
+
+        return $this->roles()->where('name' , 'admin')->exists();
+    }
+
+    public function isUser() {
+
+        $user = $this->roles()->where('name' , 'user')->exists();
+        if ($user) return "user";
+    }
+
+    public function isWorker() {
+
+        $worker = $this->roles()->where('name' , 'worker')->exists();
+        if ($worker) return "worker";
+    }
 }

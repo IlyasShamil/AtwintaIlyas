@@ -20,3 +20,46 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* Admin */
+Route::group(['middleware' => ['status' , 'auth']], function() {
+	$groupData = [
+		'namespace' => 'Blog\Admin',
+		'prefix' => 'admin',
+	];
+
+	Route::group($groupData, function() {
+		Route::resource('index' , 'MainController')->names('blog.admin.index');
+	});
+});
+/* User */
+//  Route::group(['middleware' => ['status' , 'auth']], function() {
+// 	$groupData = [
+//  		'namespace' => 'Blog\User',
+// 		'prefix' => 'user',
+// 	];
+
+// 	Route::group($groupData, function() {
+// 		Route::resource('index' , 'MainController')->names('blog.user.index');
+// 	});
+// });
+
+
+
+
+
+
+
+
+
+
+
+Route::group(['middleware' => ['auth']], function() {
+	Route::get('/user/index', function(){
+		
+	return view('blog.user.index'); });
+	});
+
+// Route::get('/user/index', function () {
+//     return view('blog.user.index');
+// });

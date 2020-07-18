@@ -70,9 +70,10 @@
                     @auth
                         
                         @if(Auth::user()->isWorker())
+                            <strong><a href="{{ url('worker/index') }}" style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none">Состав отдела</a></strong>  
                             <strong> <a href="{{ url('/') }}" style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none">Главная</a></strong>
                         @elseif(Auth::user()->isUser())
-                            <strong><a href="{{ url('user/index') }}" style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none">Кабинет</a></strong>  
+                            <strong><a href="{{ url('user/index') }}" style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none">Отделы</a></strong>  
                             <strong> <a href="{{ url('/') }}" style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none">Главная</a></strong>
                         @elseif(Auth::user()->isAdministrator())
                             <strong><a href="{{ url('admin/index') }}"  style="margin-right:10px; color: #0b3e6f; border:2px solid; text-decoration: none"> Панель Админа</a></strong>

@@ -43,8 +43,17 @@ Route::group(['middleware' => ['status' , 'auth']], function() {
 		Route::resource('index' , 'MainController')->names('blog.user.index');
 	});
 });
+/* Worker */
+Route::group(['middleware' => ['statusWorker' , 'auth']], function() {
+	$groupData = [
+			'namespace' => 'Blog\Worker',
+		'prefix' => 'worker',
+	];
 
-
+	Route::group($groupData, function() {
+	Route::resource('index' , 'MainController')->names('blog.worker.index');
+	});
+});
 
 
 

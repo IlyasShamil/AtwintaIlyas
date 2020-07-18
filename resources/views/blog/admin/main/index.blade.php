@@ -14,7 +14,7 @@
 						</div>
 						@endif
 
-						Welcome ADMIN
+						Это страница Админа. Привет {{ Auth::user()->name }}
 						
 					</div>
 				</div>

@@ -16,7 +16,7 @@ class CheckStatus
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->isAdministrator()=='admin') {
+        if (Auth::user() && Auth::user()->isAdministrator()) {
             return $next($request);
         } else {
             return redirect('/');

@@ -81,14 +81,14 @@
                         @endif
 
                         
-                        <strong>
+                       <!--  <strong>
                             <a href="{{ route('logout') }}" style="color: #0b3e6f; border:2px solid; text-decoration: none"    
                             onclick="event.preventDefault(); 
                                     document.getElementById('logout-form').submit();">
                             
                                 Выйти
                             </a>
-                        </strong>
+                        </strong> -->
 
                         <form action="{{ route('logout') }}" method="POST" style="display:none;">
                             @csrf

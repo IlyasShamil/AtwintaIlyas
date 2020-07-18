@@ -14,7 +14,7 @@
 						</div>
 						@endif
 
-						Welcome USER
+						Это страница <h3 style="background-color: yellow;">Пользователя</h3>. Привет {{ Auth::user()->name }}
 						
 					</div>
 				</div>

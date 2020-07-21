@@ -67,6 +67,9 @@ Route::get('groups/{id}/edit' , 'CRUDController@edit')->name('groups.edit');
 Route::put('groups/{id}/update' , 'CRUDController@update')->name('groups.update');
 
 
+Route::get('groups/{id}/show' , 'CRUDController@show')->name('groups.show');
+
+
 
 
 

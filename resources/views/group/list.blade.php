@@ -24,7 +24,7 @@
 							<td>{{$group->id}}</td>
 							<td>{{$group->name}}</td>
 							<td>
-								<a href="#">Просмотреть</a>
+								<a href="{{route('groups.show' , $group->id)}}">Просмотреть</a>
 								<a href="{{route('groups.edit', $group->id)}}">Редактировать</a>
 								<a href="#">Удалить</a>
 							</td>

@@ -59,7 +59,7 @@ class CRUDController extends Controller
 
     public function edit($id) {
     	$group = Group::find($id);
-    	
+
     	return view('group.edit' , ['group' => $group]);
 
     }
@@ -75,5 +75,12 @@ class CRUDController extends Controller
     	$group->save();
 
     	return redirect()->route('groups.index');
+    }
+
+    public function show($id) {
+
+    	$group = Group::find($id);
+
+    	return view('group.show' , ['groups' => $group]);
     }
 }

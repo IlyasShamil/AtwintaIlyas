@@ -69,6 +69,8 @@ Route::put('groups/{id}/update' , 'CRUDController@update')->name('groups.update'
 
 Route::get('groups/{id}/show' , 'CRUDController@show')->name('groups.show');
 
+Route::delete('groups/{id}/destroy' , 'CRUDController@destroy')->name('groups.destroy');
+
 
 
 

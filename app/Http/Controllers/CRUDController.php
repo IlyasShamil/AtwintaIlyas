@@ -83,4 +83,9 @@ class CRUDController extends Controller
 
     	return view('group.show' , ['groups' => $group]);
     }
+
+    public function destroy($id) {
+    	Group::find($id)->delete();
+    	return redirect()->route('groups.index');
+    }
 }

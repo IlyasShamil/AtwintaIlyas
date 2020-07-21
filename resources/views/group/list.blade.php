@@ -26,7 +26,13 @@
 							<td>
 								<a href="{{route('groups.show' , $group->id)}}">Просмотреть</a>
 								<a href="{{route('groups.edit', $group->id)}}">Редактировать</a>
-								<a href="#">Удалить</a>
+								<form method="POST" action="{{route('groups.destroy' , $group->id)}}">
+									@csrf
+									@method('DELETE')
+									<button onclick="return confirm('Are you sure?')">Удалить</button>
+								</form>
+
+								<!-- <a href="#">Удалить</a> -->
 							</td>
 						</tr>
 

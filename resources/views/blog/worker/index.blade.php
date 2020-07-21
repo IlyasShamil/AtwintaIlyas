@@ -19,7 +19,7 @@
 
 						<!-- ADMIN -->
 						@if (Auth::user()->name == 'admin')
-							<?php $id = 2 ?>
+							<?php $id = 1 ?>
 								<div style="border: 2px solid black; margin-top: 10px;">
 									<h2 style="background-color: red;">
 										

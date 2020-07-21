@@ -33,7 +33,7 @@ Route::group(['middleware' => ['status' , 'auth']], function() {
 	});
 });
 /* User */
- Route::group(['middleware' => ['statusUser' , 'auth']], function() {
+Route::group(['middleware' => ['statusUser' , 'auth']], function() {
 	$groupData = [
  		'namespace' => 'Blog\User',
 		'prefix' => 'user',
@@ -55,20 +55,14 @@ Route::group(['middleware' => ['statusWorker' , 'auth']], function() {
 	});
 });
 
+/*Маршруты для CRUD операций*/
+Route::get('groups' , 'CRUDController@index')->name('groups.index');
+
+Route::get('groups/create' , 'CRUDController@create')->name('groups.create');
+
+Route::post('groups/store' , 'CRUDController@store')->name('groups.store');
 
 
 
 
 
-
-
-
-// Route::group(['middleware' => ['auth']], function() {
-// 	Route::get('/user/index', function(){
-		
-// 	return view('blog.user.index'); });
-// 	});
-
-// Route::get('/user/index', function () {
-//     return view('blog.user.index');
-// });

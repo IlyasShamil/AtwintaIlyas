@@ -14,4 +14,8 @@ abstract class AdminBaseController extends MainBaseController
 
     	
     }
+    public function list() {
+
+    	return view('blog.worker.index');
+    }
 }

@@ -22,7 +22,10 @@ class CRUDController extends Controller
 
     public function index() {
 
-    	return view('group.list');
+    	$group = Group::all();
+
+
+    	return view('group.list', ['groups' => $group]);
     }
 
     public function create() {
@@ -52,5 +55,25 @@ class CRUDController extends Controller
     	// $group->name = $request->get('name');
     	// $group->save();
     	// return redirect()->route('groups.index');
+    }
+
+    public function edit($id) {
+    	$group = Group::find($id);
+    	
+    	return view('group.edit' , ['group' => $group]);
+
+    }
+
+    public function update(Request $request, $id) {
+    	$this->validate($request, [
+    		'name' => 'required'
+    	]);
+
+    	$group = Group::find($id);
+
+    	$group->fill($request->all());
+    	$group->save();
+
+    	return redirect()->route('groups.index');
     }
 }

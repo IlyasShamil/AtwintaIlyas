@@ -10,22 +10,28 @@
 			<table>
 				<thead>
 					<tr>
-						<td>ID</td>
+						<td>Id</td>
 						<td>Name</td>
 						<td>Actions</td>
 					</tr>
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>My title</td>
-						<td>
-							<a href="#">Просмотреть</a>
-							<a href="#">Редактировать</a>
-							<a href="#">Удалить</a>
-						</td>
-					</tr>
+
+					@foreach ($groups as $group)
+
+						<tr>
+							<td>{{$group->id}}</td>
+							<td>{{$group->name}}</td>
+							<td>
+								<a href="#">Просмотреть</a>
+								<a href="{{route('groups.edit', $group->id)}}">Редактировать</a>
+								<a href="#">Удалить</a>
+							</td>
+						</tr>
+
+					@endforeach
+
 				</tbody>
 			</table>
 		</div>

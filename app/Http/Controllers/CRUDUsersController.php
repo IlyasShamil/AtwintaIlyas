@@ -91,8 +91,9 @@ class CRUDUsersController extends Controller
     public function show($id) {
 
     	$user = User::find($id);
+        $group = Group::all();
 
-    	return view('user.show' , ['users' => $user]);
+    	return view('user.show' , ['users' => $user, 'group' => $group]);
     }
 
     public function destroy($id) {

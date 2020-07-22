@@ -29,7 +29,7 @@ Route::group(['middleware' => ['status' , 'auth']], function() {
 	];
 
 	Route::group($groupData, function() {
-		Route::resource('index' , 'MainController')->names('blog.admin.index');
+		Route::get('index' , 'MainController@index')->name('blog.admin.index');
 	});
 });
 /* User */
@@ -40,36 +40,43 @@ Route::group(['middleware' => ['statusUser' , 'auth']], function() {
 	];
 
 	Route::group($groupData, function() {
-		Route::resource('index' , 'MainController')->names('blog.user.index');
+		Route::get('index' , 'MainController@index')->name('blog.user.index');
 	});
 });
 /* Worker */
 Route::group(['middleware' => ['statusWorker' , 'auth']], function() {
 	$groupData = [
-			'namespace' => 'Blog\Worker',
+		'namespace' => 'Blog\Worker',
 		'prefix' => 'worker',
 	];
 
 	Route::group($groupData, function() {
-	Route::resource('index' , 'MainController')->names('blog.worker.index');
+	Route::get('index' , 'MainController@index')->name('blog.worker.index');
 	});
 });
 
 /*Маршруты для CRUD операций*/
-Route::get('groups' , 'CRUDController@index')->name('groups.index');
+Route::resource('groups' , 'CRUDController');
 
-Route::get('groups/create' , 'CRUDController@create')->name('groups.create');
-
-Route::post('groups/store' , 'CRUDController@store')->name('groups.store');
-
-Route::get('groups/{id}/edit' , 'CRUDController@edit')->name('groups.edit');
-
-Route::put('groups/{id}/update' , 'CRUDController@update')->name('groups.update');
+Route::resource('users' , 'CRUDUsersController');
 
 
-Route::get('groups/{id}/show' , 'CRUDController@show')->name('groups.show');
+/*Маршруты для CRUD операций*/
+// Route::get('groups' , 'CRUDController@index')->name('groups.index');
 
-Route::delete('groups/{id}/destroy' , 'CRUDController@destroy')->name('groups.destroy');
+// Route::get('groups/create' , 'CRUDController@create')->name('groups.create');
+
+// Route::post('groups/store' , 'CRUDController@store')->name('groups.store');
+
+// Route::get('groups/{id}/edit' , 'CRUDController@edit')->name('groups.edit');
+
+// Route::put('groups/{id}/update' , 'CRUDController@update')->name('groups.update');
+
+
+// Route::get('groups/{id}/show' , 'CRUDController@show')->name('groups.show');
+
+// Route::delete('groups/{id}/destroy' , 'CRUDController@destroy')->name('groups.destroy');
+
 
 
 

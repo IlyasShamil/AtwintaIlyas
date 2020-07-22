@@ -5,7 +5,6 @@
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
-					<div class="card-header">Dashboard</div>
 
 					<div class="card-body">
 						@if (session('status'))
@@ -14,7 +13,37 @@
 						</div>
 						@endif
 
-						Это страница <h3 style="background-color: yellow;">Пользователя</h3>. Привет {{ Auth::user()->name }}
+						@if (Auth::user()->name == 'admin')
+								<div style="border: 2px solid black; margin-top: 10px;">						
+									<table>											
+										@foreach($groups as $group)
+											
+											<tr>
+												<td>{{$group->id}}.</td>
+												<td>{{$group->name}}</td>
+											</tr>
+
+										@endforeach
+									</table>
+								</div>
+						@endif
+						@if (!isset(Auth::user()->id_group) )
+							<div style="border: 2px solid black">
+								<table>											
+									@foreach($groups as $group)
+										
+										<tr>
+											<td>{{$group->id}}.</td>
+											<td>{{$group->name}}</td>
+										</tr>
+
+									@endforeach
+								</table>
+							</div>
+						@endif
+
+						Это страница <p style="background-color: yellow;">Пользователя</p>. Привет {{ Auth::user()->name }}
+
 						
 					</div>
 				</div>

@@ -20,40 +20,23 @@
 						<!-- ADMIN -->
 						@if (Auth::user()->name == 'admin')
 							<?php $id = 1 ?>
+
 								<div style="border: 2px solid black; margin-top: 10px;">
+								@foreach($group as $group)
 									<h2 style="background-color: red;">
-										
-										{{$group->where('id' , $id)->first()->name}}
+										{{$group->name}}
 									
 									</h2>
 
 									@foreach ($name_user as $name)
 
-										@if ($name->id_group == 1)
+										@if ($name->id_group == $group->id)
 
 										<li>{{$name->name}}</li>
 
 										@endif
 
 									@endforeach
-								</div>
-						@endif
-
-						<!-- ADMIN -->
-						@if (Auth::user()->name == 'admin')
-							<?php $id = 2 ?>
-								<div style="border: 2px solid black; margin-top: 10px;">
-									<h2 style="background-color: red;">
-									{{$group->where('id' , $id)->first()->name}}</h2>
-
-								@foreach ($name_user as $name)
-
-									@if ($name->id_group == 2)
-
-										<li>{{$name->name}}</li>
-										
-									@endif
-
 								@endforeach
 								</div>
 						@endif

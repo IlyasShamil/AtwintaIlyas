@@ -41,7 +41,8 @@
 								</div>
 						@endif
 
-						@if (Auth::user()->id_group == 1 )
+
+						@if (Auth::user()->id_group >= 1 )
 							<div style="border: 2px solid black">
 								<h2 style="background-color: red;">
 
@@ -51,7 +52,7 @@
 
 								@foreach ($name_user as $name)
 
-									@if ($name->id_group == 1)
+									@if ($name->id_group == Auth::user()->id_group )
 
 										<li>{{$name->name}}</li>
 
@@ -60,25 +61,7 @@
 								@endforeach
 							</div>
 						@endif
-
-						@if (Auth::user()->id_group == 2)
-
-							<div style="border: 2px solid black">
-								<h2 style="background-color: red;">
-									{{$group->where('id' , Auth::user()->id_group)->first()->name}}
-								</h2>
-
-								@foreach ($name_user as $name)
-
-									@if ($name->id_group == 2)
-
-										<li>{{$name->name}}</li>
 									
-									@endif
-
-								@endforeach
-							</div>
-						@endif					
 					</div>
 				</div>
 			</div>

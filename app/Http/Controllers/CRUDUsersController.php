@@ -81,8 +81,19 @@ class CRUDUsersController extends Controller
     	]);
 
     	$user = user::find($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        if ($user->password == $request->get('password') ) {
+            
+            $user->password = $user->password;
 
-    	$user->fill($request->all());
+        }
+        else { $user->password = Hash::make($request->get('password'));}
+        $user->id_group = $request->get('id_group');
+        $user->save();
+
+
+    	// $user->fill($request->all());
     	$user->save();
 
     	return redirect()->route('users.index');

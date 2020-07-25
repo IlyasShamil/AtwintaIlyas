@@ -11,8 +11,15 @@
 		<p><!-- <label style="font-size:18px">password</label> {{ $users->password }} --></p>
 		<p>
 			@if(isset($users->id_group))
-			<label style="font-size:18px">Отдел</label>
-			{{ $group->where('id',$users->id_group)->first()->name}}
+			<label style="font-size:18px">
+			
+				@if (!empty($group->where('id',$users->id_group)->first()->name))
+					Отдел {{ $group->where('id',$users->id_group)->first()->name }}
+				@else
+					Отдел удален
+				@endif
+			</label>
+			
 			@endif
 		</p>
 		
